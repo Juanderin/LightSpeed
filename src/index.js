@@ -1,7 +1,7 @@
 
 import Example from "./scripts/example"
 import Player from "./scripts/player"
-// import Level from "./scripts/level"
+import Level from "./scripts/level"
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   
 
-    // const level = new Level(dimensions, canvas, {
-    //     boxSize: 50,
-    //     boxSpeed: 4,
-    //     boxSpacing: 200
-    // });
+    const level = new Level(dimensions, canvas, {
+        boxSize: 50,
+        boxSpeed: 4,
+        boxSpacing: 200
+    });
 
     const player = new Player(canvas);
 
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.stroke();
         // Background //
 
-        // level.animate();
+        level.animate();
         player.drawBox();
         requestAnimationFrame(animate);
     }
