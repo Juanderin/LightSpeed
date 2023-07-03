@@ -13,7 +13,8 @@ class Player {
         document.addEventListener("keydown", (e) => {
             switch(e.code) {
                 case "KeyA":
-                    this.changeColor("#FFFF00");
+                    // this.changeColor("#FFFF00");
+                    this.changeColor('rgb(255, 0, 0)');
                     break;
                 case "KeyS":
                     this.changeColor("#FF00FF");
@@ -28,6 +29,10 @@ class Player {
     changeColor(color) {
         this.color = color;
     }
+
+    // converColor(color) {
+
+    // }
 
     drawBox() {
 

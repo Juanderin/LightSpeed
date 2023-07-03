@@ -34,7 +34,7 @@ class Level {
         setInterval(() => {
             this.boxSpeed += 2;
             // this.boxSize += 10;
-        }, 10000);
+        }, 15000);
     //   this.animate();
     }
 
@@ -50,10 +50,17 @@ class Level {
     
     randomBox(fbd) {
         // return Math.floor(Math.random() * max);
+
+        const colors = [
+            'rgb(255, 0, 255)',
+            'rgb(255, 255, 0)',
+            'rgb(0, 255, 255)' 
+        ]
         
         const box = {
             left: fbd,
-            right: this.boxSize + fbd
+            right: this.boxSize + fbd,
+            color: colors[Math.floor(Math.random() * colors.length)]
         }
         
         return box
@@ -81,7 +88,9 @@ class Level {
             // this.ctx.lineWidth = 5;
             // this.ctx.strokeStyle = "grey";
             // this.ctx.strokeRect(box.left, 443, CONSTANTS.BOX_SIZE, CONSTANTS.BOX_SIZE);
-            this.ctx.fillStyle = "#6046F0";
+            
+            this.ctx.fillStyle = box.color
+
             this.ctx.fillRect(box.left, 444.5, this.boxSize, this.boxSize);
         });
     }
