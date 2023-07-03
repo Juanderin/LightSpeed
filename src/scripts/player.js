@@ -38,7 +38,11 @@ class Player {
             b: 0
         }
 
-        this.currentPlayerColor = `rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`;
+        // this.currentPlayerColor = `rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`;
+    }
+
+    currentPlayerColor() {
+        return `rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`;
     }
 
     keyBind() {

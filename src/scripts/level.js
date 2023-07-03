@@ -6,7 +6,7 @@ const CONSTANTS = {
 }
 
 function boxSpacing(space) {
-    return Math.floor(Math.random() * 100) + space;
+    return Math.floor(Math.random() * 600) + space;
 }
 
 class Level {
@@ -65,7 +65,7 @@ class Level {
             left: fbd,
             right: this.boxSize + fbd + this.boxSpacing,
             color: colors[Math.floor(Math.random() * colors.length)],
-            initialColor: primaryColors[Math.floor(Math.random() * primaryColors.length)]
+            // initialColor: primaryColors[Math.floor(Math.random() * primaryColors.length)]
         }
         
         return box
@@ -76,10 +76,10 @@ class Level {
         this.eachBox((box) => {
             box.left -= this.boxSpeed;
             box.right -= this.boxSpeed;
-            if (box.right <= 0) {
+            if (box.left + 50 <= 0) {
                 this.boxes.shift();
                 // if (this.loopCount < this.loopLimit) {
-                    const reX = this.dimensions.width + boxSpacing(this.boxSpacing);
+                    const reX = this.boxes.at(-1).left + 50 + boxSpacing(this.boxSpacing);
                     this.boxes.push(this.randomBox(reX));
                     // this.loopCount++;
                 // }
@@ -96,29 +96,36 @@ class Level {
             
            
 
-            if (this.boxSpeed <= 5) { 
-                this.ctx.fillStyle = box.initialColor;
-            } else {
-            this.ctx.fillStyle = box.color;
-            };
-
+            // if (this.boxSpeed <= 5) {   // og
+            //     this.ctx.fillStyle = box.initialColor;
+            // } else {
+            // this.ctx.fillStyle = box.color;
+            // };
+            this.ctx.fillStyle = box.color; // temp for testing
             this.ctx.fillRect(box.left, 444.5, this.boxSize, this.boxSize);
         });
     }
 
-    collide(player) {
+    collide(playerSize, playerColor) {
 
-        const overlap  = (dim1, dim2) => {
-            if (dim1 < box.left) {
-                return false;
-            } 
-        }
+        // const overlap  = (dim1, playerColor) => {
+        //     if (dim1 < box.left) {
+        //         return false;
+        //     } 
+        // }
         let collision = false;
         
-        this.eachBox((box) => {
-            if (overlap(this.playerSize, box.left)) 
-            {collision = true}
-        });
+        if (playerSize >= this.boxes[0].left && playerColor !== this.boxes[0].color) {
+            //  && playerColor === this.boxes[0].color) {
+                // console.log("MATCH!!!");
+                // debugger;
+            collision = true;
+        }
+
+        // this.eachBox((box) => {
+        //     if (playerSize <= box.left && playerColor === box.color) 
+        //     {collision = true}
+        // });
 
         return collision;
     }
