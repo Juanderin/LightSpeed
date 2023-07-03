@@ -32,7 +32,7 @@ class Level {
         this.drawEboxes();
 
         setInterval(() => {
-            this.boxSpeed += 2;
+            this.boxSpeed += 0.5;
             // this.boxSize += 10;
         }, 15000);
     //   this.animate();
@@ -54,13 +54,23 @@ class Level {
         const colors = [
             'rgb(255, 0, 255)',
             'rgb(255, 255, 0)',
-            'rgb(0, 255, 255)' 
+            'rgb(0, 255, 255)',
+            'rgb(255, 0, 0)',
+            'rgb(0, 255, 0)',
+            'rgb(0, 0, 255)'
+        ]
+
+        const primaryColors = [
+            'rgb(255, 0, 0)',
+            'rgb(0, 255, 0)',
+            'rgb(0, 0, 255)'
         ]
         
         const box = {
             left: fbd,
             right: this.boxSize + fbd + this.boxSpacing,
-            color: colors[Math.floor(Math.random() * colors.length)]
+            color: colors[Math.floor(Math.random() * colors.length)],
+            initialColor: primaryColors[Math.floor(Math.random() * primaryColors.length)]
         }
         
         return box
@@ -89,11 +99,24 @@ class Level {
             // this.ctx.strokeStyle = "grey";
             // this.ctx.strokeRect(box.left, 443, CONSTANTS.BOX_SIZE, CONSTANTS.BOX_SIZE);
             
-            this.ctx.fillStyle = box.color
+           
+
+            if (this.boxSpeed <= 5) { 
+                this.ctx.fillStyle = box.initialColor;
+            } else {
+            this.ctx.fillStyle = box.color;
+            };
 
             this.ctx.fillRect(box.left, 444.5, this.boxSize, this.boxSize);
         });
     }
+
+    // collision(player) {
+
+    //     this.eachBox((box) => {
+    //         if (overlap(box.left, this.playerSize))
+    //     })
+    // }
 
 
     animate() {

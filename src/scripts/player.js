@@ -1,10 +1,15 @@
+const PLAYER_CONSTANTS = {
+
+    PLAYER_SIZE: 50
+};
+
 class Player {
     constructor(canvas) {
-        this.main = main;
         this.canvas = canvas;
-        this.color = 'black';
+        // this.color = 'rgb(0,0,0)';
         this.ctx = this.canvas.getContext("2d");
         // this.drawBox()
+        this.playerSize = PLAYER_CONSTANTS.PLAYER_SIZE
       
         this.keyStates = {
             KeyA: {
@@ -32,6 +37,8 @@ class Player {
             g: 0,
             b: 0
         }
+
+        this.currentPlayerColor = `rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`;
     }
 
     keyBind() {
@@ -122,9 +129,9 @@ class Player {
         // this.ctx.lineWidth = 5
         // this.ctx.strokeStyle = 'grey';
         // this.ctx.strokeRect(2, 443, 50, 50);
+       
         this.ctx.fillStyle = `rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`;
-        this.ctx.fillRect(0, 444.5, 50, 50)
-        
+        this.ctx.fillRect(0, 444.5, this.playerSize, this.playerSize)
      
     }
 

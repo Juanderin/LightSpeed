@@ -14,7 +14,7 @@ class Game {
         this.level = new Level(this.dimensions, this.canvas, {
             boxSize: 50,
             boxSpeed: 4,
-            boxSpacing: 200
+            boxSpacing: 1000
         });
 
 
@@ -54,6 +54,7 @@ class Game {
         this.player.drawBox();
         requestAnimationFrame(this.animate.bind(this));
     } 
+
 
 }
 
