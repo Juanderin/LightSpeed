@@ -38,11 +38,6 @@ class Level {
     //   this.animate();
     }
 
-
-    handleClick() {
-        this.animate
-    }
-
     eachBox(callback) {
         this.boxes.forEach(callback.bind(this))
     }
@@ -111,12 +106,22 @@ class Level {
         });
     }
 
-    // collision(player) {
+    collide(player) {
 
-    //     this.eachBox((box) => {
-    //         if (overlap(box.left, this.playerSize))
-    //     })
-    // }
+        const overlap  = (dim1, dim2) => {
+            if (dim1 < box.left) {
+                return false;
+            } 
+        }
+        let collision = false;
+        
+        this.eachBox((box) => {
+            if (overlap(this.playerSize, box.left)) 
+            {collision = true}
+        });
+
+        return collision;
+    }
 
 
     animate() {
