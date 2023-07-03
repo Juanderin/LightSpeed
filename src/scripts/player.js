@@ -13,7 +13,7 @@ class Player {
         document.addEventListener("keydown", (e) => {
             switch(e.code) {
                 case "KeyA":
-                    this.changeColor("#FFFF00");
+                    // this.changeColor("#FFFF00");
                     break;
                 case "KeyS":
                     this.changeColor("#FF00FF");
@@ -26,6 +26,13 @@ class Player {
     }
 
     changeColor(color) {
+
+        const colors = {
+            1: 0,
+            2: 0,
+            3: 0
+        }
+
         this.color = color;
     }
 
