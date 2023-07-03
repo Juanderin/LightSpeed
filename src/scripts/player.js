@@ -9,17 +9,17 @@ class Player {
         this.keyStates = {
             KeyA: {
                 lastPressTime: 0,
-                doubleTapDelay: 500
+                doubleTapDelay: 250
             },
 
             KeyS: {
                 lastPressTime: 0,
-                doubleTapDelay: 500 
+                doubleTapDelay: 250 
             },
 
             KeyD: {
                 lastPressTime: 0,
-                doubleTapDelay: 500 
+                doubleTapDelay: 250 
             } 
         }
 
@@ -48,16 +48,28 @@ class Player {
                 } else {
                     switch(e.code) {
                         case "KeyA":
+                            if (this.colors.r === 0 ) {
                             this.colors.r += 255
                             // this.changeColor(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+                            console.log('A worked')
+                            console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+                            };
                             break;
                         case "KeyS":
+                            if (this.colors.g === 0 ) {
                             this.colors.g += 255
                             // this.changeColor(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+                            console.log('S worked')
+                            console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+                            }
                             break;
                         case "KeyD":
+                            if (this.colors.b === 0 ) {
                             this.colors.b += 255
                             // this.changeColor(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+                            console.log('D worked')
+                            console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+                            }
                             break;
 
                         }
@@ -73,13 +85,25 @@ class Player {
     handleDoubleTap(key) {
         switch(key) {
             case 'KeyA':
+                if (this.colors.r === 255 ) {
                 this.colors.r -= 255
+                console.log('A double worked')
+                console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+                }
                 break;
             case 'KeyS':
+                if (this.colors.g === 255 ) {
                 this.colors.g -= 255
+                console.log('S double worked')
+                console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+                }
                 break;
             case 'KeyD':
+                if (this.colors.b === 255 ) {
                 this.colors.b -= 255
+                console.log('D double worked')
+                console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+                }
                 break;
         }
     } 

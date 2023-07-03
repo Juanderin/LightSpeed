@@ -59,7 +59,7 @@ class Level {
         
         const box = {
             left: fbd,
-            right: this.boxSize + fbd,
+            right: this.boxSize + fbd + this.boxSpacing,
             color: colors[Math.floor(Math.random() * colors.length)]
         }
         
