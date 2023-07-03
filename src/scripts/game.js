@@ -10,37 +10,83 @@ class Game {
         this.started = false;
         this.registerStart();
         this.openingText();
+
+
+        this.timer = {
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+            gameSeconds: 0,
+            count: 0
+        }
     }
 
     openingText () {
-        this.ctx.font = '80px Arial'
-        this.ctx.strokeText("Click To Start", 300, 500);
+        this.ctx.font = '80px Tahoma'
+        this.ctx.strokeStyle = "#FF0000"
+        this.ctx.strokeText("Click To Start", 270, 275);
 
-        // document.addEventListener('mousedown', (e) => {
-        //     console.log(e)
-        //     if (e) {
-        //         this.ctx.clearRect(0,0,1000,1000);
-        //     }
-        // });
+    }
+
+    closingText() {
+        this.ctx.font = '40px Tahoma'
+        this.ctx.strokeStyle = "#FF0000"
+        this.ctx.strokeText(`Game Over, Your Time = ${this.savedTime.min} Minutes, ${this.savedTime.sec} Seconds`, 85, 275);
+
     }
 
     registerStart () {
 
-        // this.boundClick = this.boundClick.bind(this);
         document.addEventListener('mousedown', (e) => {
             console.log(e)
-            if (!this.started) {
+            if (!this.started && e) {
                 this.started = true;
-                let clickCount = 0
-                if (e && clickCount < 2) {
-                    this.ctx.clearRect(0, 0, 1000, 1000);
                     this.start();
-                    clickCount += 1;
                 }
+            });
+    }
+
+
+    countTimer() {
+
+        
+        this.timer.count++;
+
+        if (this.timer.count === 60) {
+            this.timer.seconds++;
+            this.timer.gameSeconds++;
+            this.timer.count = 0; 
+        }
+
+        if (this.timer.seconds === 60) {
+            this.timer.minutes++;
+            this.timer.seconds = 0;
+        }
+
+        if (this.timer.minutes === 60 ) {
+            this.timer.hours++;
+            this.timer.minutes = 0;
     
-                console.log(`${clickCount} this is clicks`)
-            }
-        });
+        }
+                
+            
+    }
+        
+    drawTimer() {
+        this.ctx.font = '50px Tahoma'
+        this.ctx.strokeStyle = "#FF0000"
+        this.ctx.strokeText(`${this.timer.gameSeconds}`, 50, 50);
+        
+        
+    }
+
+    resetTimer () {
+
+        this.timer.count = 0;
+        this.timer.hours = 0;
+        this.timer.minutes = 0;
+        this.timer.seconds = 0;
+        this.timer.gameSeconds = 0;
     }
 
     start() {
@@ -82,7 +128,7 @@ class Game {
             }
         }
         
-        this.ctx.lineWidth = 11;
+        // this.ctx.lineWidth = 11;
         this.ctx.strokeStyle = "#348888";
         this.ctx.beginPath();
         this.ctx.moveTo(0, 500)
@@ -93,15 +139,22 @@ class Game {
 
         this.level.animate();
         this.player.drawBox();
+        this.countTimer();
+        this.drawTimer();
 
 
         if (this.gameOver()) {
             // alert('game over');
-            this.openingText();
-            // this.registerStart();
+            this.savedTime = {
+                min: this.timer.minutes,
+                sec: this.timer.seconds
+            }
+            this.ctx.clearRect(0,0,1000,1000);
+            this.closingText();
+            this.resetTimer();
             this.started = false;
             console.log('collision has occured')
-        }
+        } 
         if (this.started) {
             requestAnimationFrame(this.animate.bind(this));
         }
