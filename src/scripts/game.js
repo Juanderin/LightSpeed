@@ -34,7 +34,12 @@ class Game {
         this.ctx.lineWidth = 2;
         this.ctx.font = '40px Tahoma'
         this.ctx.strokeStyle = "#FF0000"
-        this.ctx.strokeText(`Game Over, Your Time = ${this.savedTime.min} Minutes, ${this.savedTime.sec} Seconds`, 85, 275);
+        this.ctx.strokeText(`Game Over, Your Time = ${this.savedTime.min} Minutes, ${this.savedTime.sec} Seconds`, 75, 245);
+
+        this.ctx.lineWidth = 2;
+        this.ctx.font = '40px Tahoma'
+        this.ctx.strokeStyle = "#348888"
+        this.ctx.strokeText('Click To Restart', 345, 305);
 
     }
 

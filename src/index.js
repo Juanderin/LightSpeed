@@ -2,8 +2,8 @@
 import Example from "./scripts/example"
 import Player from "./scripts/player"
 import Level from "./scripts/level"
+import TitleStyling from './scripts/styling'
 import Game from "./scripts/game"
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,9 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const dimensions = {width: canvas.width, height: canvas.height };
 
   
-
-
+    
     new Game(canvas)
+    
+    new TitleStyling()
 
 
 
