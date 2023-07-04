@@ -22,6 +22,7 @@ class Game {
     }
 
     openingText () {
+        this.ctx.lineWidth = 2;
         this.ctx.font = '80px Tahoma'
         this.ctx.strokeStyle = "#FF0000"
         this.ctx.strokeText("Click To Start", 270, 275);
@@ -29,6 +30,8 @@ class Game {
     }
 
     closingText() {
+        
+        this.ctx.lineWidth = 2;
         this.ctx.font = '40px Tahoma'
         this.ctx.strokeStyle = "#FF0000"
         this.ctx.strokeText(`Game Over, Your Time = ${this.savedTime.min} Minutes, ${this.savedTime.sec} Seconds`, 85, 275);
@@ -73,6 +76,7 @@ class Game {
     }
         
     drawTimer() {
+        this.ctx.lineWidth = 4;
         this.ctx.font = '50px Tahoma'
         this.ctx.strokeStyle = "#FF0000"
         this.ctx.strokeText(`${this.timer.gameSeconds}`, 50, 50);
@@ -128,7 +132,7 @@ class Game {
             }
         }
         
-        // this.ctx.lineWidth = 11;
+        this.ctx.lineWidth = 11;
         this.ctx.strokeStyle = "#348888";
         this.ctx.beginPath();
         this.ctx.moveTo(0, 500)
