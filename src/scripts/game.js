@@ -1,6 +1,7 @@
 import Player from "./player"
 import Level from "./level"
 import TitleStyling from "./styling"
+import Links from "./links"
 
 class Game {
     constructor(canvas) {
@@ -31,6 +32,7 @@ class Game {
         this.ctx.strokeText("Click To Start", 270, 275);
 
         new TitleStyling()
+        new Links()
 
     }
 
