@@ -102,7 +102,9 @@ class Level {
             // this.ctx.fillStyle = box.color;
             // };
             this.ctx.fillStyle = box.color; // temp for testing
-            this.ctx.fillRect(box.left, 444.5, this.boxSize, this.boxSize);
+            // this.ctx.fillRect(box.left, 444.5, this.boxSize, this.boxSize);
+            this.ctx.fillRect(box.left, 0, this.boxSize, 500)
+
         });
     }
 

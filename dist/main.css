@@ -6,20 +6,46 @@
   padding: 20px;
 }
 
+.container {
+  width: 100%;
+  min-height: 20vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+  padding: 0px;
+}
+
+#title span {
+  font-size: 60px;
+  padding: 0 10px;
+  font-family: Tahoma;
+  color: #fff;
+  animation: zoomup 2s linear infinite;
+  animation-delay: calc(200ms * var(--i));
+}
+
+@keyframes zoomup {
+  0%, 100% {
+    color: grey;
+    text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white, 0 0 60px white;
+  }
+}
 #main {
-  color: purple;
+  background-color: lightgray;
 }
 
 html, body {
   margin: 0;
+  background-color: lightgray;
 }
 
 #my-canvas {
   padding-left: 0;
   padding-right: 0;
-  margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
   display: block;
-  border: 5px solid lightgray;
+  border: 30px solid lightgray;
 }

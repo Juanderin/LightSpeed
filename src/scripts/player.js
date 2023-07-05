@@ -124,9 +124,6 @@ class Player {
         // this.color = color;
     }
 
-    // converColor(color) {
-
-    // }
 
     drawBox() {
 
@@ -135,7 +132,7 @@ class Player {
         // this.ctx.strokeRect(2, 443, 50, 50);
        
         this.ctx.fillStyle = `rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`;
-        this.ctx.fillRect(0, 444.5, this.playerSize, this.playerSize)
+        this.ctx.fillRect(0, 0, this.playerSize, 500)
      
     }
 
