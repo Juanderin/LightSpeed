@@ -33,19 +33,19 @@
   }
 }
 #main {
-  color: purple;
+  background-color: lightgray;
 }
 
 html, body {
   margin: 0;
+  background-color: lightgray;
 }
 
 #my-canvas {
   padding-left: 0;
   padding-right: 0;
-  margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
   display: block;
-  border: 5px solid lightgray;
+  border: 30px solid lightgray;
 }

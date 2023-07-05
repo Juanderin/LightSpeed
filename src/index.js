@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     
     new Game(canvas)
     
-    new TitleStyling()
 
 
 

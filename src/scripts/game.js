@@ -1,5 +1,6 @@
 import Player from "./player"
 import Level from "./level"
+import TitleStyling from "./styling"
 
 class Game {
     constructor(canvas) {
@@ -26,6 +27,8 @@ class Game {
         this.ctx.font = '80px Tahoma'
         this.ctx.strokeStyle = "#FF0000"
         this.ctx.strokeText("Click To Start", 270, 275);
+
+        new TitleStyling()
 
     }
 
