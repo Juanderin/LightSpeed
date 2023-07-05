@@ -5,7 +5,9 @@ import TitleStyling from "./styling"
 class Game {
     constructor(canvas) {
         this.canvas = canvas;
+        this.bottomCanvas = document.getElementById('bottom-canvas')
         this.ctx = canvas.getContext('2d');
+        this.ctx2 = this.bottomCanvas.getContext('2d')
         this.dimensions = {width: canvas.width, height: canvas.height};
         // this.start();
         this.started = false;
@@ -84,10 +86,10 @@ class Game {
     }
         
     drawTimer() {
-        this.ctx.lineWidth = 4;
-        this.ctx.font = '50px Tahoma'
-        this.ctx.strokeStyle = "#FF0000"
-        this.ctx.strokeText(`${this.timer.gameSeconds}`, 50, 50);
+        this.ctx2.lineWidth = 4;
+        this.ctx2.font = '50px Tahoma'
+        this.ctx2.strokeStyle = "#FF0000"
+        this.ctx2.strokeText(`${this.timer.gameSeconds}`, 32, 50);
         
         
     }
@@ -127,7 +129,7 @@ class Game {
         // Drawing background //
         // ctx.translate(0.5, 0.5);
         this.ctx.clearRect(0, 0, 1000, 1000);
-
+        this.ctx2.clearRect(0,0,1000,1000)
         const canvasHeight = 1000;
         const rectSize = canvasHeight / 4;
 
@@ -140,13 +142,13 @@ class Game {
             }
         }
         
-        this.ctx.lineWidth = 11;
-        this.ctx.strokeStyle = "#348888";
-        this.ctx.beginPath();
-        this.ctx.moveTo(0, 500)
-        this.ctx.lineTo(1000, 500);
+        // this.ctx.lineWidth = 11;
+        // this.ctx.strokeStyle = "#348888";
+        // this.ctx.beginPath();
+        // this.ctx.moveTo(0, 500)
+        // this.ctx.lineTo(1000, 500);
         
-        this.ctx.stroke();
+        // this.ctx.stroke();
         // Background //
 
         this.level.animate();
@@ -162,6 +164,8 @@ class Game {
                 sec: this.timer.seconds
             }
             this.ctx.clearRect(0,0,1000,1000);
+            this.ctx2.clearRect(0,0,1000,1000)
+
             this.closingText();
             this.resetTimer();
             this.started = false;

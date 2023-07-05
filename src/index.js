@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("my-canvas");
     const ctx = canvas.getContext("2d")
     const dimensions = {width: canvas.width, height: canvas.height };
-
   
     
     new Game(canvas)
