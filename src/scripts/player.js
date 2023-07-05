@@ -48,6 +48,7 @@ class Player {
     keyBind() {
         document.addEventListener("keydown", (e) => {
             console.log(e)
+            console.log(e.code)
 
             const keyState = this.keyStates[e.code];
 
