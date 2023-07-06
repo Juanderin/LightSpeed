@@ -1,5 +1,4 @@
 
-import Example from "./scripts/example"
 import Player from "./scripts/player"
 import Level from "./scripts/level"
 import TitleStyling from './scripts/styling'

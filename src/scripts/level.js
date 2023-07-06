@@ -171,19 +171,8 @@ class Level {
     
     drawEboxes() {
         this.eachBox((box) => {
-            // this.ctx.lineWidth = 5;
-            // this.ctx.strokeStyle = "grey";
-            // this.ctx.strokeRect(box.left, 443, CONSTANTS.BOX_SIZE, CONSTANTS.BOX_SIZE);
-            
            
-
-            // if (this.boxSpeed <= 5) {   // og
-            //     this.ctx.fillStyle = box.initialColor;
-            // } else {
-            // this.ctx.fillStyle = box.color;
-            // };
-            this.ctx.fillStyle = box.color; // temp for testing
-            // this.ctx.fillRect(box.left, 444.5, this.boxSize, this.boxSize);
+            this.ctx.fillStyle = box.color;
             this.ctx.fillRect(box.left, 0, this.boxSize, 500)
 
         });
@@ -191,24 +180,13 @@ class Level {
 
     collide(playerSize, playerColor) {
 
-        // const overlap  = (dim1, playerColor) => {
-        //     if (dim1 < box.left) {
-        //         return false;
-        //     } 
-        // }
+      
         let collision = false;
         
         if (playerSize >= this.boxes[0].left && playerColor !== this.boxes[0].color) {
-            //  && playerColor === this.boxes[0].color) {
-                // console.log("MATCH!!!");
-                // debugger;
+         
             collision = true;
         }
-
-        // this.eachBox((box) => {
-        //     if (playerSize <= box.left && playerColor === box.color) 
-        //     {collision = true}
-        // });
 
         return collision;
     }
@@ -219,7 +197,7 @@ class Level {
         
         this.drawEboxes();
         
-        // requestAnimationFrame(this.animate.bind(this));
+     
     }
       
 
@@ -227,6 +205,3 @@ class Level {
 }
 
 export default Level;
-// make a level and a game class, prompt the pieces to move 
-
-// make the moving pieces activate on the level class 

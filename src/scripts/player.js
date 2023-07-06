@@ -44,14 +44,19 @@ class Player {
             b: 0
         }
 
-        // this.currentPlayerColor = `rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`;
     }
 
     currentPlayerColor() {
         return `rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`;
     }
 
-
+    currentPlayerColorHash() {
+        this.col = {
+            r: this.colors.r,
+            g: this.colors.g,
+            b: this.colors.b
+        };
+    }
 
     // difficultySwitch() {
 

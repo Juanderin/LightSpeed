@@ -66,11 +66,12 @@ class Game {
         this.ctx2.font = '30px Tahoma'
         this.ctx2.strokeStyle = `red`
         this.ctx2.strokeText("Single Tap Add Color, Double To Remove", 200, 25);
-        this.ctx2.strokeStyle = `rgb(${this.player.colors.r}, 0, 0)`
+        debugger
+        this.ctx2.strokeStyle = `rgb(${this.player.col.r}, 0, 0)`
         this.ctx2.strokeText("Press [A]", 200, 60);
-        this.ctx2.strokeStyle = `rgb(0, ${this.player.colors.g}, 0)`
+        this.ctx2.strokeStyle = `rgb(0, ${this.player.col.g}, 0)`
         this.ctx2.strokeText("Press [S]", 340, 60);
-        this.ctx2.strokeStyle = `rgb(0, 0, ${this.player.colors.b})`
+        this.ctx2.strokeStyle = `rgb(0, 0, ${this.player.col.b})`
         this.ctx2.strokeText("Press [D]", 478, 60);
     }
 
@@ -167,15 +168,7 @@ class Game {
                 this.ctx.fillRect(j * rectSize, i * rectSize, rectSize, rectSize);
             }
         }
-        
-        // this.ctx.lineWidth = 11;
-        // this.ctx.strokeStyle = "#348888";
-        // this.ctx.beginPath();
-        // this.ctx.moveTo(0, 500)
-        // this.ctx.lineTo(1000, 500);
-        
-        // this.ctx.stroke();
-        // Background //
+
 
         this.level.animate();
         this.player.drawBox();
@@ -185,7 +178,7 @@ class Game {
 
 
         if (this.gameOver()) {
-            // alert('game over');
+        
             this.savedTime = {
                 min: this.timer.minutes,
                 sec: this.timer.seconds
