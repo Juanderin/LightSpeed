@@ -30,7 +30,7 @@ class Player {
 
         this.keyBind();
 
-
+//
 
         this.colors = {
             r: 0,
