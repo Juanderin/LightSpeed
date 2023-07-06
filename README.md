@@ -37,6 +37,44 @@ Most of the code is written in vanilla Javascripts, the resources below were use
 * Canvas, primary resource to build game board and help render animations. Great for implementing 2D mechanisms
 * npm to manage project dependencies
 
+Feature Implementation:
+--
+#
+This key bind specifically for attaching A, S and D to an keydown even that would flip the state and allow a player to switch between one of the primary colors
+---
+
+    keyBind() {
+        document.addEventListener("keydown", (e) => {
+            console.log(e)
+            console.log(e.code)
+            if (["KeyA", "KeyS", "KeyD"].includes(e.code)) {
+                const valSign = this.keyStates[e.code] ? -1 : 1;
+                this.keyStates[e.code] = !this.keyStates[e.code];
+
+                this.changeColor(e.code, valSign);
+            }
+
+    });
+}
+
+#
+ This object to store key states and its color values as independent inputs
+---
+
+        
+    this.keyStates = {
+        KeyA: false,
+        KeyS: false,
+        KeyD: false
+    };
+
+    this.keyBind();
+
+    this.colors = {
+        r: 0,
+        g: 0,
+        b: 0
+    }
 
 Future Implementations:
 ----
@@ -46,3 +84,5 @@ Future Implementations:
 * Zen mode, a circle track where you can’t loose and simply gain points by mixing
 the right upcoming colors
 * A colorblind mode that uses shapes or numbers instead of color
+
+

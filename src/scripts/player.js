@@ -28,6 +28,8 @@ class Player {
         //         doubleTapDelay: 250 
         //     } 
         // }
+
+
         this.keyStates = {
             KeyA: false,
             KeyS: false,
@@ -75,69 +77,35 @@ class Player {
                 this.changeColor(e.code, valSign);
             }
 
-            // switch(e.code) {
-            //     case "KeyA":
-            //         if (this.colors.r === 0 ) {
-            //             this.colors.r += 255
-            //             // this.changeColor(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-            //             console.log('A worked')
-            //             console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-            //         } else {
-            //             this.colors.r -= 255
-            //         };
-            //         break;
-            //     case "KeyS":
-            //         if (this.colors.g === 0 ) {
-            //             this.colors.g += 255
-            //             // this.changeColor(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-            //             console.log('S worked')
-            //             console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-            //         } else {
-            //             this.colors.g -= 255
-            //         }
-            //         break;
-            //     case "KeyD":
-            //         if (this.colors.b === 0 ) {
-            //             this.colors.b += 255
-            //             // this.changeColor(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-            //             console.log('D worked')
-            //             console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-            //         } else {
-            //             this.colors.b -= 255
-            //         }
-            //         break;
-
-            // }
-                // keyState.lastPressTime = currentTime;
         });
     }
 
 
-    handleDoubleTap(key) {
-        switch(key) {
-            case 'KeyA':
-                if (this.colors.r === 255 ) {
-                this.colors.r -= 255
-                console.log('A double worked')
-                console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-                }
-                break;
-            case 'KeyS':
-                if (this.colors.g === 255 ) {
-                this.colors.g -= 255
-                console.log('S double worked')
-                console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-                }
-                break;
-            case 'KeyD':
-                if (this.colors.b === 255 ) {
-                this.colors.b -= 255
-                console.log('D double worked')
-                console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-                }
-                break;
-        }
-    } 
+    // handleDoubleTap(key) {
+    //     switch(key) {
+    //         case 'KeyA':
+    //             if (this.colors.r === 255 ) {
+    //             this.colors.r -= 255
+    //             console.log('A double worked')
+    //             console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+    //             }
+    //             break;
+    //         case 'KeyS':
+    //             if (this.colors.g === 255 ) {
+    //             this.colors.g -= 255
+    //             console.log('S double worked')
+    //             console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+    //             }
+    //             break;
+    //         case 'KeyD':
+    //             if (this.colors.b === 255 ) {
+    //             this.colors.b -= 255
+    //             console.log('D double worked')
+    //             console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+    //             }
+    //             break;
+    //     }
+    // } 
 
     changeColor(keyPressed, valSign) {
         this.colors.r += (valSign * (this.swatches[keyPressed].r));
@@ -148,9 +116,9 @@ class Player {
 
     drawBox() {
 
-        // this.ctx.lineWidth = 5
-        // this.ctx.strokeStyle = 'grey';
-        // this.ctx.strokeRect(2, 443, 50, 50);
+        // this.ctx.lineWidth = 7
+        // this.ctx.strokeStyle = 'gray';
+        // this.ctx.strokeRect(3, 0, 50, 500);
        
         this.ctx.fillStyle = `rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`;
         this.ctx.fillRect(0, 0, this.playerSize, 500)

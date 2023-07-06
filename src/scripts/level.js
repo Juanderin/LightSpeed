@@ -40,6 +40,9 @@ class Level {
         //         b: Math.floor(Math.random() * 256)
         //     }
         // };
+       
+       
+       
         this.swatches = {
             KeyA: {
                 r: 255,
@@ -132,15 +135,7 @@ class Level {
 
     
     randomBox(fbd) {
-        // return Math.floor(Math.random() * max);
-
-        // const colors = this.generateRandomColorMix();
-
-        // const primaryColors = [
-        //     'rgb(255, 0, 0)',
-        //     'rgb(0, 255, 0)',
-        //     'rgb(0, 0, 255)'
-        // ]
+    
         
         let temp = 'rgb(0, 0, 0'
          
@@ -152,7 +147,7 @@ class Level {
             left: fbd,
             right: this.boxSize + fbd + this.boxSpacing,
             color: temp
-            // initialColor: primaryColors[Math.floor(Math.random() * primaryColors.length)]
+
         }
         
         return box
