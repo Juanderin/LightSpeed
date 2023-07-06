@@ -34,13 +34,10 @@ class Game {
         this.ctx.strokeText("Use A S D Keys To Play", 300, 310);
         this.ctx.font = '23px Tahoma'
         this.ctx.strokeStyle = "black"
-        this.ctx.strokeText("Each Key Is A Main Color, A = Red, S = Green, D = Blue", 215, 380);
-        this.ctx.font = '23px Tahoma'
-        this.ctx.strokeStyle = "black"
         this.ctx.strokeText("Tap Corresponding Key To Add Color", 315, 410);
         this.ctx.font = '23px Tahoma'
         this.ctx.strokeStyle = "black"
-        this.ctx.strokeText("Objective Is To Mix Two Colors To Match The Incoming Color Before It Reaches You", 80, 440);
+        this.ctx.strokeText("Objective is To Mix Colors To Match The Incoming Color Before It Reaches You", 90, 440);
         
         new TitleStyling()
         new Links()
@@ -56,7 +53,7 @@ class Game {
 
         this.ctx.lineWidth = 2;
         this.ctx.font = '40px Tahoma'
-        this.ctx.strokeStyle = "#348888"
+        this.ctx.strokeStyle = "black"
         this.ctx.strokeText('Click To Restart', 345, 305);
 
     }
@@ -65,13 +62,12 @@ class Game {
         this.ctx2.lineWidth = 2;
         this.ctx2.font = '30px Tahoma'
         this.ctx2.strokeStyle = `red`
-        this.ctx2.strokeText("Single Tap Add Color, Double To Remove", 200, 25);
-        debugger
-        this.ctx2.strokeStyle = `rgb(${this.player.col.r}, 0, 0)`
+        this.ctx2.strokeText("Tap To Add or Remove Color", 200, 25);
+        this.ctx2.strokeStyle = `rgb(${this.player.colors.r}, 0, 0)`
         this.ctx2.strokeText("Press [A]", 200, 60);
-        this.ctx2.strokeStyle = `rgb(0, ${this.player.col.g}, 0)`
+        this.ctx2.strokeStyle = `rgb(0, ${this.player.colors.g}, 0)`
         this.ctx2.strokeText("Press [S]", 340, 60);
-        this.ctx2.strokeStyle = `rgb(0, 0, ${this.player.col.b})`
+        this.ctx2.strokeStyle = `rgb(0, 0, ${this.player.colors.b})`
         this.ctx2.strokeText("Press [D]", 478, 60);
     }
 
@@ -163,7 +159,7 @@ class Game {
         for (let i = 0; i < 6; i++) {
             for (let j = 0; j < 6; j++) {
                 const colorValue = 255 - (255 / 5) * j;
-                const grayscale = `rgb(${colorValue}, ${colorValue}, ${colorValue})`;
+                const grayscale = `rgb(${colorValue - 25}, ${colorValue - 25}, ${colorValue - 25})`;
                 this.ctx.fillStyle = grayscale;
                 this.ctx.fillRect(j * rectSize, i * rectSize, rectSize, rectSize);
             }
