@@ -10,7 +10,6 @@ class Game {
         this.ctx = canvas.getContext('2d');
         this.ctx2 = this.bottomCanvas.getContext('2d')
         this.dimensions = {width: canvas.width, height: canvas.height};
-        // this.start();
         this.started = false;
         this.registerStart();
         this.openingText();
@@ -27,10 +26,22 @@ class Game {
 
     openingText () {
         this.ctx.lineWidth = 2;
-        this.ctx.font = '80px Tahoma'
+        this.ctx.font = '60px Tahoma'
         this.ctx.strokeStyle = "#FF0000"
-        this.ctx.strokeText("Click To Start", 270, 275);
-
+        this.ctx.strokeText("Click To Start", 330, 250);
+        this.ctx.font = '40px Tahoma'
+        this.ctx.strokeStyle = "#FF0000"
+        this.ctx.strokeText("Use A S D Keys To Play", 300, 310);
+        this.ctx.font = '23px Tahoma'
+        this.ctx.strokeStyle = "black"
+        this.ctx.strokeText("Each Key Is A Main Color, A = Red, S = Green, D = Blue", 215, 380);
+        this.ctx.font = '23px Tahoma'
+        this.ctx.strokeStyle = "black"
+        this.ctx.strokeText("Tap Corresponding Key To Add Color", 315, 410);
+        this.ctx.font = '23px Tahoma'
+        this.ctx.strokeStyle = "black"
+        this.ctx.strokeText("Objective Is To Mix Two Colors To Match The Incoming Color Before It Reaches You", 80, 440);
+        
         new TitleStyling()
         new Links()
 
@@ -48,6 +59,19 @@ class Game {
         this.ctx.strokeStyle = "#348888"
         this.ctx.strokeText('Click To Restart', 345, 305);
 
+    }
+
+    instructionText() {
+        this.ctx2.lineWidth = 2;
+        this.ctx2.font = '30px Tahoma'
+        this.ctx2.strokeStyle = `red`
+        this.ctx2.strokeText("Single Tap Add Color, Double To Remove", 200, 25);
+        this.ctx2.strokeStyle = `rgb(${this.player.colors.r}, 0, 0)`
+        this.ctx2.strokeText("Press [A]", 200, 60);
+        this.ctx2.strokeStyle = `rgb(0, ${this.player.colors.g}, 0)`
+        this.ctx2.strokeText("Press [S]", 340, 60);
+        this.ctx2.strokeStyle = `rgb(0, 0, ${this.player.colors.b})`
+        this.ctx2.strokeText("Press [D]", 478, 60);
     }
 
     registerStart () {
@@ -157,6 +181,7 @@ class Game {
         this.player.drawBox();
         this.countTimer();
         this.drawTimer();
+        this.instructionText();
 
 
         if (this.gameOver()) {

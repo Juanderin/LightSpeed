@@ -1,0 +1,30 @@
+.container {
+    width: 100%;
+    min-height: 20vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    padding: 0px;
+  }
+  
+  #title span {
+    font-size: 60px;
+    padding: 0 10px;
+    font-family: Tahoma;
+    color: #fff;
+    animation: zoomup 2s linear infinite;
+    animation-delay: calc(200ms * var(--i));
+  }
+  
+  @keyframes zoomup {
+    0%,
+    100% {
+      color: grey;
+    //   filter: blur(0px);
+      text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white,
+        0 0 40px white, 0 0 60px white;
+    }
+  
+  }
