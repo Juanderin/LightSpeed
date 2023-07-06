@@ -6,9 +6,9 @@ class Links {
         this.myStuff = document.getElementById('my-stuff')
         
         
-        this.makeButton('google.com', 'git-button.png')
+        this.makeButton('https://github.com/Juanderin/LightSpeeds', 'git-button.png')
         
-        this.makeButton('google.com', 'link-button.png')
+        this.makeButton('https://www.linkedin.com/in/juanavilame/', 'link-button.png')
         
         
         
