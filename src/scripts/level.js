@@ -23,40 +23,40 @@ class Level {
         // this.loopCount = 0;
         const firstBoxDistance = this.dimensions.width + 100
         
-        this.swatches = {
-            KeyA: {
-                r: Math.floor(Math.random() * 256), 
-                g: Math.floor(Math.random() * 256), 
-                b: Math.floor(Math.random() * 256)
-            },
-            KeyS: {
-                r: Math.floor(Math.random() * 256), 
-                g: Math.floor(Math.random() * 256), 
-                b: Math.floor(Math.random() * 256)
-            },
-            KeyD: {
-                r: Math.floor(Math.random() * 256), 
-                g: Math.floor(Math.random() * 256), 
-                b: Math.floor(Math.random() * 256)
-            }
-        };
         // this.swatches = {
         //     KeyA: {
-        //         r: 255,
-        //         g: 0,
-        //         b: 0
+        //         r: Math.floor(Math.random() * 256), 
+        //         g: Math.floor(Math.random() * 256), 
+        //         b: Math.floor(Math.random() * 256)
         //     },
         //     KeyS: {
-        //         r: 0,
-        //         g: 255,
-        //         b: 0
+        //         r: Math.floor(Math.random() * 256), 
+        //         g: Math.floor(Math.random() * 256), 
+        //         b: Math.floor(Math.random() * 256)
         //     },
         //     KeyD: {
-        //         r: 0,
-        //         g: 0,
-        //         b: 255
+        //         r: Math.floor(Math.random() * 256), 
+        //         g: Math.floor(Math.random() * 256), 
+        //         b: Math.floor(Math.random() * 256)
         //     }
         // };
+        this.swatches = {
+            KeyA: {
+                r: 255,
+                g: 0,
+                b: 0
+            },
+            KeyS: {
+                r: 0,
+                g: 255,
+                b: 0
+            },
+            KeyD: {
+                r: 0,
+                g: 0,
+                b: 255
+            }
+        };
 
         this.mixColors = this.generateRandomColorMix();
 
@@ -142,10 +142,16 @@ class Level {
         //     'rgb(0, 0, 255)'
         // ]
         
+        let temp = 'rgb(0, 0, 0'
+         
+        if (this.mixColors[Math.floor(Math.random() * this.mixColors.length)] !== 'rgb(255, 255, 255') { 
+            temp = this.mixColors[Math.floor(Math.random() * this.mixColors.length)]
+        }
+
         const box = {
             left: fbd,
             right: this.boxSize + fbd + this.boxSpacing,
-            color: this.mixColors[Math.floor(Math.random() * this.mixColors.length)],
+            color: temp
             // initialColor: primaryColors[Math.floor(Math.random() * primaryColors.length)]
         }
         
@@ -171,19 +177,8 @@ class Level {
     
     drawEboxes() {
         this.eachBox((box) => {
-            // this.ctx.lineWidth = 5;
-            // this.ctx.strokeStyle = "grey";
-            // this.ctx.strokeRect(box.left, 443, CONSTANTS.BOX_SIZE, CONSTANTS.BOX_SIZE);
-            
            
-
-            // if (this.boxSpeed <= 5) {   // og
-            //     this.ctx.fillStyle = box.initialColor;
-            // } else {
-            // this.ctx.fillStyle = box.color;
-            // };
-            this.ctx.fillStyle = box.color; // temp for testing
-            // this.ctx.fillRect(box.left, 444.5, this.boxSize, this.boxSize);
+            this.ctx.fillStyle = box.color;
             this.ctx.fillRect(box.left, 0, this.boxSize, 500)
 
         });
@@ -191,24 +186,13 @@ class Level {
 
     collide(playerSize, playerColor) {
 
-        // const overlap  = (dim1, playerColor) => {
-        //     if (dim1 < box.left) {
-        //         return false;
-        //     } 
-        // }
+      
         let collision = false;
         
         if (playerSize >= this.boxes[0].left && playerColor !== this.boxes[0].color) {
-            //  && playerColor === this.boxes[0].color) {
-                // console.log("MATCH!!!");
-                // debugger;
+         
             collision = true;
         }
-
-        // this.eachBox((box) => {
-        //     if (playerSize <= box.left && playerColor === box.color) 
-        //     {collision = true}
-        // });
 
         return collision;
     }
@@ -219,7 +203,7 @@ class Level {
         
         this.drawEboxes();
         
-        // requestAnimationFrame(this.animate.bind(this));
+     
     }
       
 
@@ -227,6 +211,3 @@ class Level {
 }
 
 export default Level;
-// make a level and a game class, prompt the pieces to move 
-
-// make the moving pieces activate on the level class 
