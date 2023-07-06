@@ -23,40 +23,40 @@ class Level {
         // this.loopCount = 0;
         const firstBoxDistance = this.dimensions.width + 100
         
-        // this.swatches = {
-        //     KeyA: {
-        //         r: Math.floor(Math.random() * 256), 
-        //         g: Math.floor(Math.random() * 256), 
-        //         b: Math.floor(Math.random() * 256)
-        //     },
-        //     KeyS: {
-        //         r: Math.floor(Math.random() * 256), 
-        //         g: Math.floor(Math.random() * 256), 
-        //         b: Math.floor(Math.random() * 256)
-        //     },
-        //     KeyD: {
-        //         r: Math.floor(Math.random() * 256), 
-        //         g: Math.floor(Math.random() * 256), 
-        //         b: Math.floor(Math.random() * 256)
-        //     }
-        // };
         this.swatches = {
             KeyA: {
-                r: 255,
-                g: 0,
-                b: 0
+                r: Math.floor(Math.random() * 256), 
+                g: Math.floor(Math.random() * 256), 
+                b: Math.floor(Math.random() * 256)
             },
             KeyS: {
-                r: 0,
-                g: 255,
-                b: 0
+                r: Math.floor(Math.random() * 256), 
+                g: Math.floor(Math.random() * 256), 
+                b: Math.floor(Math.random() * 256)
             },
             KeyD: {
-                r: 0,
-                g: 0,
-                b: 255
+                r: Math.floor(Math.random() * 256), 
+                g: Math.floor(Math.random() * 256), 
+                b: Math.floor(Math.random() * 256)
             }
         };
+        // this.swatches = {
+        //     KeyA: {
+        //         r: 255,
+        //         g: 0,
+        //         b: 0
+        //     },
+        //     KeyS: {
+        //         r: 0,
+        //         g: 255,
+        //         b: 0
+        //     },
+        //     KeyD: {
+        //         r: 0,
+        //         g: 0,
+        //         b: 255
+        //     }
+        // };
 
         this.mixColors = this.generateRandomColorMix();
 
