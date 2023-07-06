@@ -138,7 +138,7 @@ class Game {
         });
 
 
-        this.player = new Player(this.canvas);
+        this.player = new Player(this.canvas, this.level);
 
         this.animate();
 
