@@ -4,29 +4,35 @@ const PLAYER_CONSTANTS = {
 };
 
 class Player {
-    constructor(canvas) {
+    constructor(canvas, level) {
         this.canvas = canvas;
         // this.color = 'rgb(0,0,0)';
         this.ctx = this.canvas.getContext("2d");
         // this.drawBox()
         this.playerSize = PLAYER_CONSTANTS.PLAYER_SIZE
+        this.swatches = level.swatches;
       
+        // this.keyStates = {
+        //     KeyA: {
+        //         lastPressTime: 0,
+        //         doubleTapDelay: 250
+        //     },
+
+        //     KeyS: {
+        //         lastPressTime: 0,
+        //         doubleTapDelay: 250 
+        //     },
+
+        //     KeyD: {
+        //         lastPressTime: 0,
+        //         doubleTapDelay: 250 
+        //     } 
+        // }
         this.keyStates = {
-            KeyA: {
-                lastPressTime: 0,
-                doubleTapDelay: 250
-            },
-
-            KeyS: {
-                lastPressTime: 0,
-                doubleTapDelay: 250 
-            },
-
-            KeyD: {
-                lastPressTime: 0,
-                doubleTapDelay: 250 
-            } 
-        }
+            KeyA: false,
+            KeyS: false,
+            KeyD: false
+        };
 
         this.keyBind();
 
@@ -45,54 +51,62 @@ class Player {
         return `rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`;
     }
 
+
+
+    // difficultySwitch() {
+
+    //     this.
+
+    // }
+
     keyBind() {
         document.addEventListener("keydown", (e) => {
             console.log(e)
             console.log(e.code)
+            if (["KeyA", "KeyS", "KeyD"].includes(e.code)) {
+                const valSign = this.keyStates[e.code] ? -1 : 1;
+                this.keyStates[e.code] = !this.keyStates[e.code];
 
-            const keyState = this.keyStates[e.code];
-
-            if (keyState) {
-                const currentTime = Date.now();
-                if (currentTime - keyState.lastPressTime < keyState.doubleTapDelay) {
-                    this.handleDoubleTap(e.code);
-                    keyState.lastPressTime = currentTime;
-                } else {
-                    switch(e.code) {
-                        case "KeyA":
-                            if (this.colors.r === 0 ) {
-                            this.colors.r += 255
-                            // this.changeColor(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-                            console.log('A worked')
-                            console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-                            };
-                            break;
-                        case "KeyS":
-                            if (this.colors.g === 0 ) {
-                            this.colors.g += 255
-                            // this.changeColor(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-                            console.log('S worked')
-                            console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-                            }
-                            break;
-                        case "KeyD":
-                            if (this.colors.b === 0 ) {
-                            this.colors.b += 255
-                            // this.changeColor(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-                            console.log('D worked')
-                            console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
-                            }
-                            break;
-
-                        }
-                        keyState.lastPressTime = currentTime;
-                    }
+                this.changeColor(e.code, valSign);
             }
 
+            // switch(e.code) {
+            //     case "KeyA":
+            //         if (this.colors.r === 0 ) {
+            //             this.colors.r += 255
+            //             // this.changeColor(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+            //             console.log('A worked')
+            //             console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+            //         } else {
+            //             this.colors.r -= 255
+            //         };
+            //         break;
+            //     case "KeyS":
+            //         if (this.colors.g === 0 ) {
+            //             this.colors.g += 255
+            //             // this.changeColor(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+            //             console.log('S worked')
+            //             console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+            //         } else {
+            //             this.colors.g -= 255
+            //         }
+            //         break;
+            //     case "KeyD":
+            //         if (this.colors.b === 0 ) {
+            //             this.colors.b += 255
+            //             // this.changeColor(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+            //             console.log('D worked')
+            //             console.log(`rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`)
+            //         } else {
+            //             this.colors.b -= 255
+            //         }
+            //         break;
 
-
+            // }
+                // keyState.lastPressTime = currentTime;
         });
     }
+
 
     handleDoubleTap(key) {
         switch(key) {
@@ -120,9 +134,10 @@ class Player {
         }
     } 
 
-    changeColor(color) {
-        // this.color = `rgb(${this.colors.r}, ${this.colors.g}, ${this.colors.b})`;
-        // this.color = color;
+    changeColor(keyPressed, valSign) {
+        this.colors.r += (valSign * (this.swatches[keyPressed].r));
+        this.colors.g += (valSign * (this.swatches[keyPressed].g));
+        this.colors.b += (valSign * (this.swatches[keyPressed].b));
     }
 
 

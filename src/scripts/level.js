@@ -22,12 +22,50 @@ class Level {
         // this.loopLimit = 3;
         // this.loopCount = 0;
         const firstBoxDistance = this.dimensions.width + 100
+        
+        // this.swatches = {
+        //     KeyA: {
+        //         r: Math.floor(Math.random() * 256), 
+        //         g: Math.floor(Math.random() * 256), 
+        //         b: Math.floor(Math.random() * 256)
+        //     },
+        //     KeyS: {
+        //         r: Math.floor(Math.random() * 256), 
+        //         g: Math.floor(Math.random() * 256), 
+        //         b: Math.floor(Math.random() * 256)
+        //     },
+        //     KeyD: {
+        //         r: Math.floor(Math.random() * 256), 
+        //         g: Math.floor(Math.random() * 256), 
+        //         b: Math.floor(Math.random() * 256)
+        //     }
+        // };
+        this.swatches = {
+            KeyA: {
+                r: 255,
+                g: 0,
+                b: 0
+            },
+            KeyS: {
+                r: 0,
+                g: 255,
+                b: 0
+            },
+            KeyD: {
+                r: 0,
+                g: 0,
+                b: 255
+            }
+        };
+
+        this.mixColors = this.generateRandomColorMix();
 
         this.boxes = [
             this.randomBox(firstBoxDistance),
             this.randomBox(firstBoxDistance + (boxSpacing(this.boxSpacing))),
             this.randomBox(firstBoxDistance + (2 * boxSpacing(this.boxSpacing)))
         ];
+
 
         this.drawEboxes();
 
@@ -42,29 +80,72 @@ class Level {
         this.boxes.forEach(callback.bind(this))
     }
 
+    generateRandomColorMix() {
+        const colors = [
+            this.swatches.KeyA,
+            this.swatches.KeyS,
+            this.swatches.KeyD,
+            {
+                r: this.swatches.KeyA.r + this.swatches.KeyS.r,
+                g: this.swatches.KeyA.g + this.swatches.KeyS.g,
+                b: this.swatches.KeyA.b + this.swatches.KeyS.b
+            },
+            {
+                r: this.swatches.KeyA.r + this.swatches.KeyD.r,
+                g: this.swatches.KeyA.g + this.swatches.KeyD.g,
+                b: this.swatches.KeyA.b + this.swatches.KeyD.b
+            },
+            {
+                r: this.swatches.KeyD.r + this.swatches.KeyS.r,
+                g: this.swatches.KeyD.g + this.swatches.KeyS.g,
+                b: this.swatches.KeyD.b + this.swatches.KeyS.b
+            },
+            {
+                r: this.swatches.KeyA.r + this.swatches.KeyD.r + this.swatches.KeyS.r,
+                g: this.swatches.KeyA.g + this.swatches.KeyD.g + this.swatches.KeyS.g,
+                b: this.swatches.KeyA.b + this.swatches.KeyD.b + this.swatches.KeyS.b
+            }
+        ];
+
+        return colors.map(color => `rgb(${color.r}, ${color.g}, ${color.b})`);
+    }
+
+    changeLevel() {
+        this.swatches = {
+            KeyA: {
+                r: Math.floor(Math.random() * 256), 
+                g: Math.floor(Math.random() * 256), 
+                b: Math.floor(Math.random() * 256)
+            },
+            KeyS: {
+                r: Math.floor(Math.random() * 256), 
+                g: Math.floor(Math.random() * 256), 
+                b: Math.floor(Math.random() * 256)
+            },
+            KeyD: {
+                r: Math.floor(Math.random() * 256), 
+                g: Math.floor(Math.random() * 256), 
+                b: Math.floor(Math.random() * 256)
+            }
+        };
+    }
+
     
     randomBox(fbd) {
         // return Math.floor(Math.random() * max);
 
-        const colors = [
-            'rgb(255, 0, 255)',
-            'rgb(255, 255, 0)',
-            'rgb(0, 255, 255)',
-            'rgb(255, 0, 0)',
-            'rgb(0, 255, 0)',
-            'rgb(0, 0, 255)'
-        ]
+        // const colors = this.generateRandomColorMix();
 
-        const primaryColors = [
-            'rgb(255, 0, 0)',
-            'rgb(0, 255, 0)',
-            'rgb(0, 0, 255)'
-        ]
+        // const primaryColors = [
+        //     'rgb(255, 0, 0)',
+        //     'rgb(0, 255, 0)',
+        //     'rgb(0, 0, 255)'
+        // ]
         
         const box = {
             left: fbd,
             right: this.boxSize + fbd + this.boxSpacing,
-            color: colors[Math.floor(Math.random() * colors.length)],
+            color: this.mixColors[Math.floor(Math.random() * this.mixColors.length)],
             // initialColor: primaryColors[Math.floor(Math.random() * primaryColors.length)]
         }
         
