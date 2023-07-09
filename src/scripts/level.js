@@ -73,7 +73,7 @@ class Level {
         this.drawEboxes();
 
         setInterval(() => {
-            this.boxSpeed += 0.5;
+            this.boxSpeed += 0.2;
             // this.boxSize += 10;
         }, 15000);
     //   this.animate();

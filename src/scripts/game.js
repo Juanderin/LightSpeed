@@ -130,7 +130,7 @@ class Game {
 
         this.level = new Level(this.dimensions, this.canvas, {
             boxSize: 50,
-            boxSpeed: 0.3,
+            boxSpeed: 0.1,
             boxSpacing: 400
         });
 
