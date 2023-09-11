@@ -68,8 +68,6 @@ class Player {
 
     keyBind() {
         document.addEventListener("keydown", (e) => {
-            console.log(e)
-            console.log(e.code)
             if (["KeyA", "KeyS", "KeyD"].includes(e.code)) {
                 const valSign = this.keyStates[e.code] ? -1 : 1;
                 this.keyStates[e.code] = !this.keyStates[e.code];

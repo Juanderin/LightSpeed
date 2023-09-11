@@ -74,7 +74,6 @@ class Game {
     registerStart () {
 
         this.canvas.addEventListener('mousedown', (e) => {
-            console.log(e)
             if (!this.started && e) {
                 this.started = true;
                     this.start();
