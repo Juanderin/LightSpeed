@@ -20,6 +20,7 @@ class Links {
         this.button.setAttribute('id', 'links')
         this.a = document.createElement('a')
         this.a.setAttribute('href', link)
+        this.a.setAttribute('target', '_blank')
         this.img = document.createElement('img')
         this.button.appendChild(this.img)
         this.img.setAttribute('src', img)
