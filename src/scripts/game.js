@@ -49,7 +49,7 @@ class Game {
         this.ctx.lineWidth = 2;
         this.ctx.font = '40px Tahoma'
         this.ctx.strokeStyle = "#FF0000"
-        this.ctx.strokeText(`Game Over, Your Time = ${this.savedTime.min} Minutes, ${this.savedTime.sec} Seconds`, 75, 245);
+        this.ctx.strokeText(`Game Over, Your Score ${this.timer.gameSeconds}`, 260, 245);
 
         this.ctx.lineWidth = 2;
         this.ctx.font = '40px Tahoma'
@@ -73,7 +73,7 @@ class Game {
 
     registerStart () {
 
-        document.addEventListener('mousedown', (e) => {
+        this.canvas.addEventListener('mousedown', (e) => {
             console.log(e)
             if (!this.started && e) {
                 this.started = true;
@@ -185,7 +185,6 @@ class Game {
             this.closingText();
             this.resetTimer();
             this.started = false;
-            console.log('collision has occured')
         } 
         if (this.started) {
             requestAnimationFrame(this.animate.bind(this));
